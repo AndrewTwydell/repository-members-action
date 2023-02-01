@@ -9442,7 +9442,7 @@ const getMembers = async () => {
             owner,
             repo,
         });
-        core.setOutput("members", collaborators.map((collaborator) => collaborator.id));
+        core.setOutput("members", collaborators);
     } catch (error) {
         core.setFailed(error.message);
     }
