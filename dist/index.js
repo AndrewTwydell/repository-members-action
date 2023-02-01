@@ -12021,10 +12021,9 @@ const getMembers = async () => {
         const newOctokit = new Octokit({
             auth: ghToken
         });
-        const stuff = await newOctokit.rest.repos.getUsersWithAccessToProtectedBranch({
+        const stuff = await newOctokit.rest.repos.listCollaborators({
             owner,
             repo,
-            branch: "main",
         });
         core.setOutput("members", stuff);
         console.log(stuff);
