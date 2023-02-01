@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
 const { Octokit } = require("@octokit/rest");
 
 const getMembers = async () => {
@@ -8,16 +7,14 @@ const getMembers = async () => {
         const owner = core.getInput('owner');
         const repo = core.getInput('repo');
 
-        const newOctokit = new Octokit({
+        const octokit = new Octokit({
             auth: ghToken
         });
-        const stuff = await newOctokit.rest.repos.listCollaborators({
+        const collaborators = await octokit.rest.repos.listCollaborators({
             owner,
             repo,
         });
-        core.setOutput("members", stuff);
-        console.log(stuff);
-        // const payload = JSON.stringify(github.context.payload, undefined, 2);
+        core.setOutput("members", collaborators.map((collaborator) => collaborator.id));
     } catch (error) {
         core.setFailed(error.message);
     }
