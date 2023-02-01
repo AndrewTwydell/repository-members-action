@@ -1,0 +1,13 @@
+---
+name: "Get Repo Members"
+description: "Get all members associated with a repository"
+inputs:
+  token: # id of input
+    description: "PAT with permissions"
+    required: true
+outputs:
+  members: # id of output
+    description: "List of members of repository"
+runs:
+  using: "node16"
+  main: "index.js"
