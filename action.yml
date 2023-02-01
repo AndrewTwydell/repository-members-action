@@ -2,11 +2,17 @@
 name: "Get Repo Members"
 description: "Get all members associated with a repository"
 inputs:
-  token: # id of input
+  token:
     description: "PAT with permissions"
     required: true
+  owner:
+    description: "Repo owner"
+    required: true
+  repo:
+    description: "Repo name"
+    required: true
 outputs:
-  members: # id of output
+  members:
     description: "List of members of repository"
 runs:
   using: "node16"
